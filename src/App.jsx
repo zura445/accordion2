@@ -1,9 +1,10 @@
 import "./App.css";
+import info from "./info.json";
 
 function App() {
   return (
     <>
-      <div className="bg-white py-0 md:py-[65px] pr-0 md:pr-[95px] min-w-[327px] rounded-lg md:flex relative md:gap-10">
+      <div className="bg-white py-0 md:py-[65px] pr-0 md:pr-[95px] min-w-[327px] rounded-lg md:flex relative md:gap-[88px]">
         <div className="">
           <div className="flex-justify-center hidden md:block">
             <img src="/mention-half.svg" alt="mention image" />
@@ -19,18 +20,21 @@ function App() {
             />
           </div>
         </div>
-        <div className="mt-40">
-          <h1 className="">FAQ</h1>
-          <div className="flex items-center justify-center w-full gap-4 mt-10">
-            <p className="flex items-center">
-              How many team members can I invite?
-            </p>
-            <img src="/arrow.png" alt="arrow" className="w-4 h-2" />
-          </div>
-          <p className="mt-3">
-            No more than 1GB. All files in your account must fit your allotted
-            storage space.
-          </p>
+        <div className="mt-40 md:mt-0">
+          <h1 className="text-[32px] font-bold flex justify-start">FAQ</h1>
+          {info.map((item, index) => (
+            <div key={index} className="">
+              <div className="flex items-center mt-5">
+                <p className="">{item.question}</p>
+                <img
+                  src="/arrow.png"
+                  alt="arrow image"
+                  className="w-4 h-3 ml-4"
+                />
+              </div>
+              <p className="pt-2">{item.answer}</p>
+            </div>
+          ))}
         </div>
       </div>
     </>
