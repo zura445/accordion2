@@ -1,12 +1,15 @@
+import { useState } from "react";
 import "./App.css";
 import info from "./info.json";
 
 function App() {
+  const [accord, setAccord] = useState(0);
+
   return (
     <>
-      <div className="bg-white py-0 md:py-[65px] pr-0 md:pr-[95px] min-w-[327px] rounded-lg md:flex relative md:gap-[88px]">
+      <div className="bg-white py-0 md:py-[65px] pr-0 md:pr-[95px] min-w-[327px] rounded-lg md:flex relative md:gap-[88px] p-5 md:p-0">
         <div className="">
-          <div className="flex-justify-center hidden md:block">
+          <div className="hidden md:block">
             <img src="/mention-half.svg" alt="mention image" />
           </div>
           <div className="block md:hidden absolute top-[-110px] left-10">
@@ -24,15 +27,27 @@ function App() {
           <h1 className="text-[32px] font-bold flex justify-start">FAQ</h1>
           {info.map((item, index) => (
             <div key={index} className="">
-              <div className="flex items-center mt-5">
-                <p className="">{item.question}</p>
+              <div
+                onClick={() => setAccord(item.id)}
+                className="flex items-center mt-5 cursor-pointer"
+              >
+                <p
+                  style={{ fontWeight: accord === item.id ? "bold" : "normal" }}
+                  className="pt-2 text-left"
+                >
+                  {item.question}
+                </p>
                 <img
                   src="/arrow.png"
                   alt="arrow image"
                   className="w-4 h-3 ml-4"
                 />
               </div>
-              <p className="pt-2">{item.answer}</p>
+              {accord === item.id ? (
+                <p className="pt-2 text-left">{item.answer}</p>
+              ) : (
+                ""
+              )}
             </div>
           ))}
         </div>
