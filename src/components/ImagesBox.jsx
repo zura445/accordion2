@@ -1,6 +1,6 @@
 import React from "react";
 
-function Images() {
+function ImagesBox() {
   return (
     <div>
       <div className="">
@@ -22,4 +22,4 @@ function Images() {
   );
 }
 
-export default Images;
+export default ImagesBox;
